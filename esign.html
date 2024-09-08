@@ -1,14 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirect to App</title>
-    <script type="text/javascript">
-        window.location.href = "itms-services://?action=download-manifest&url=https://ipafiledl98.github.io/Install/esign.plist";
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirect to App</title>
+  <script type="text/javascript">
+    fetch('https://ipapi.co/json/')
+      .then(response => response.json())
+      .then(data => {
+        if (data.country_code === 'IR') {
+          window.location.href = "itms-services://?action=download-manifest&url=https://ipafiledl98.github.io/Install/esign.plist";
+        } else {
+          document.body.innerHTML = "<p>لطفا بدون فیلترشکن لینک را باز کنید.</p>";
+        }
+      });
+  </script>
 </head>
 <body>
-    <p>Redirecting to app installation...</p>
+  <p>در حال هدایت به صفحه نصب برنامه...</p>
 </body>
 </html>
