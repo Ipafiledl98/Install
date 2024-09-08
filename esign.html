@@ -1,18 +1,15 @@
 <script type="text/javascript">
-fetch('https://ipapi.co/json/')
+fetch('http://www.geoplugin.net/json.gp')
 .then(response => response.json())
 .then(data => {
     console.log(data); // برای بررسی اطلاعات IP
-    if (data.country_code === 'IR') {
-        setTimeout(function() {
-            window.location.href = "itms-services://?action=download-manifest&url=https://ipafiledl98.github.io/Install/esign.plist";
-        }, 1000); // یک ثانیه تأخیر برای اطمینان از پردازش
+    if (data.geoplugin_countryCode === 'IR') {
+        window.location.href = "itms-services://?action=download-manifest&url=https://ipafiledl98.github.io/Install/esign.plist";
     } else {
         document.body.innerHTML = "<p>لطفا بدون فیلترشکن لینک را باز کنید.</p>";
     }
 })
 .catch(error => {
     console.error('Error fetching IP information:', error);
-    document.body.innerHTML = "<p>مشکلی در شناسایی موقعیت مکانی رخ داده است.</p>";
 });
 </script>
