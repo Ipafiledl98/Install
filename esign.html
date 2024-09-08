@@ -1,15 +1,14 @@
-<script type="text/javascript">
-fetch('http://www.geoplugin.net/json.gp')
-.then(response => response.json())
-.then(data => {
-    console.log(data); // برای بررسی اطلاعات IP
-    if (data.geoplugin_countryCode === 'IR') {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect to App</title>
+    <script type="text/javascript">
         window.location.href = "itms-services://?action=download-manifest&url=https://ipafiledl98.github.io/Install/esign.plist";
-    } else {
-        document.body.innerHTML = "<p>لطفا بدون فیلترشکن لینک را باز کنید.</p>";
-    }
-})
-.catch(error => {
-    console.error('Error fetching IP information:', error);
-});
-</script>
+    </script>
+</head>
+<body>
+    <p>Redirecting to app installation...</p>
+</body>
+</html>
