@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirect to App</title>
-    <script type="text/javascript">
-        window.location.href = "itms-services://?action=download-manifest&url=https://ipafiledl98.github.io/Install/scarlet.plist";
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redirect to App</title>
+<script type="text/javascript">
+    async function checkIP() {
+        try {
+            // درخواست به API برای دریافت اطلاعات IP
+            const response = await fetch('https://api.ipgeolocation.io/ipgeo?apiKey=a0b3b0b1f9fd40a0b7a17813d69e4b5d');
+            const data = await response.json();
+            
+            // بررسی کشور
+            if (data.country_code2 === 'IR') {
+                // اگر IP متعلق به ایران بود، به لینک هدایت کن
+                window.location.href = "itms-services://?action=download-manifest&url=https://ipafiledl98.github.io/Install/scarlet.plist";
+            } else {
+                // اگر IP از ایران نبود، پیام نمایش بده
+                document.getElementById("message").innerText = "لطفا فیلترشکن خود را خاموش کنید.";
+            }
+        } catch (error) {
+            console.error('Error fetching IP info:', error);
+        }
+    }
+
+    // فراخوانی تابع هنگام بارگذاری صفحه
+    window.onload = checkIP;
+</script>
 </head>
 <body>
-    <p>Redirecting to app installation...</p>
+<p id="message">در حال بررسی IP...</p>
 </body>
 </html>
