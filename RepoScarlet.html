@@ -22,7 +22,7 @@
         /* استایل برای محتوای مودال */
         .modal-content {
             background-color: white;
-            padding: 20px;
+            padding: 15px; /* کاهش فضای داخلی محتوای مودال */
             border: 1px solid #888;
             width: 80%;
             max-width: 250px; /* کوچکتر شدن عرض مودال */
@@ -31,13 +31,18 @@
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); /* ایجاد سایه */
         }
 
-        /* استایل برای دکمه‌ها */
+        /* کاهش فاصله بین جملات */
+        .modal-content p {
+            margin: 5px 0; /* کاهش فاصله بین جملات */
+        }
+
+        /* استایل برای دکمه */
         .modal-btn {
-            padding: 10px 20px;
-            margin: 10px;
+            padding: 8px 16px; /* کاهش اندازه دکمه */
+            margin-top: 10px; /* کاهش فاصله بین دکمه و متن بالا */
             border: none;
             cursor: pointer;
-            border-radius: 5px; /* گوشه‌های گرد برای دکمه‌ها */
+            border-radius: 5px; /* گوشه‌های گرد برای دکمه */
             background-color: #4CAF50;
             color: white;
         }
