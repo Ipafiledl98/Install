@@ -5,7 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirect to App</title>
     <script type="text/javascript">
-        window.location.href = "scarlet://repo=https://viprepo1.github.io/RepoApps/scarlet.json";
+        function redirectToRepo() {
+            // نمایش پیام تایید به کاربر
+            var userConfirmation = confirm("آیا می‌خواهید به این صفحه هدایت شوید؟");
+            
+            // اگر کاربر روی "OK" کلیک کرد، هدایت انجام می‌شود
+            if (userConfirmation) {
+                window.location.href = "scarlet://repo=https://viprepo1.github.io/RepoApps/scarlet.json";
+            }
+        }
+
+        // اجرای تابع هدایت بعد از بارگذاری صفحه
+        window.onload = function() {
+            redirectToRepo();
+        }
     </script>
 </head>
 <body>
