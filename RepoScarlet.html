@@ -1,25 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirect to App</title>
-    <script type="text/javascript">
-        function redirectToRepo() {
-            // نمایش پیام هشدار به کاربر
-            alert("شما در حال هدایت به یک صفحه دیگر هستید.");
-            
-            // هدایت کاربر به URL بعد از کلیک روی "OK" در هشدار
-            window.location.href = "scarlet://repo=https://viprepo1.github.io/RepoApps/scarlet.json";
+    <style>
+        /* استایل برای مودال */
+        #myModal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
-        // اجرای تابع هدایت بعد از بارگذاری صفحه
-        window.onload = function() {
-            redirectToRepo();
+        /* استایل برای محتوای مودال */
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
         }
-    </script>
+
+        /* استایل برای دکمه‌ها */
+        .modal-btn {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .confirm-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .cancel-btn {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <p>Redirecting to Repo...</p>
+
+<!-- محتوای صفحه -->
+<p>Redirecting to Repo...</p>
+
+<!-- پنجره مودال -->
+<div id="myModal">
+    <div class="modal-content">
+        <p>لطفاً توجه کنید:</p>
+        <p>1. این رپو را برای دیگران ارسال نکنید.</p>
+        <p>2. از رپو بدون استفاده از فیلترشکن استفاده کنید.</p>
+        <p>آیا این موارد را قبول دارید و می‌خواهید ادامه دهید؟</p>
+        <button class="modal-btn confirm-btn" id="confirmBtn">تأیید</button>
+        <button class="modal-btn cancel-btn" id="cancelBtn">لغو</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // نمایش مودال بعد از بارگذاری صفحه
+    window.onload = function() {
+        document.getElementById("myModal").style.display = "block";
+    };
+
+    // هدایت به URL بعد از تایید
+    document.getElementById("confirmBtn").onclick = function() {
+        window.location.href = "scarlet://repo=https://viprepo1.github.io/RepoApps/scarlet.json";
+    };
+
+    // بستن مودال اگر کاربر روی "لغو" کلیک کند
+    document.getElementById("cancelBtn").onclick = function() {
+        document.getElementById("myModal").style.display = "none";
+        alert("شما هدایت نخواهید شد.");
+    };
+</script>
+
 </body>
 </html>
