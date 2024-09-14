@@ -25,7 +25,7 @@
             padding: 20px;
             border: 1px solid #888;
             width: 80%;
-            max-width: 300px; /* کوچکتر شدن عرض مودال */
+            max-width: 250px; /* کوچکتر شدن عرض مودال */
             border-radius: 15px; /* گوشه‌های گرد */
             text-align: center;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); /* ایجاد سایه */
@@ -38,15 +38,7 @@
             border: none;
             cursor: pointer;
             border-radius: 5px; /* گوشه‌های گرد برای دکمه‌ها */
-        }
-
-        .confirm-btn {
             background-color: #4CAF50;
-            color: white;
-        }
-
-        .cancel-btn {
-            background-color: #f44336;
             color: white;
         }
     </style>
@@ -62,9 +54,7 @@
         <p>لطفاً توجه کنید:</p>
         <p>1. این رپو را برای دیگران ارسال نکنید.</p>
         <p>2. از رپو بدون استفاده از فیلترشکن استفاده کنید.</p>
-        <p>آیا این موارد را قبول دارید و می‌خواهید ادامه دهید؟</p>
         <button class="modal-btn confirm-btn" id="confirmBtn">تأیید</button>
-        <button class="modal-btn cancel-btn" id="cancelBtn">لغو</button>
     </div>
 </div>
 
@@ -77,12 +67,6 @@
     // هدایت به URL بعد از تایید
     document.getElementById("confirmBtn").onclick = function() {
         window.location.href = "scarlet://repo=https://viprepo1.github.io/RepoApps/scarlet.json";
-    };
-
-    // بستن مودال اگر کاربر روی "لغو" کلیک کند
-    document.getElementById("cancelBtn").onclick = function() {
-        document.getElementById("myModal").style.display = "none";
-        alert("شما هدایت نخواهید شد.");
     };
 </script>
 
