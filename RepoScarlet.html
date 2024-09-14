@@ -6,13 +6,11 @@
     <title>Redirect to App</title>
     <script type="text/javascript">
         function redirectToRepo() {
-            // نمایش پیام تایید به کاربر
-            var userConfirmation = confirm("آیا می‌خواهید به این صفحه هدایت شوید؟");
+            // نمایش پیام هشدار به کاربر
+            alert("شما در حال هدایت به یک صفحه دیگر هستید.");
             
-            // اگر کاربر روی "OK" کلیک کرد، هدایت انجام می‌شود
-            if (userConfirmation) {
-                window.location.href = "scarlet://repo=https://viprepo1.github.io/RepoApps/scarlet.json";
-            }
+            // هدایت کاربر به URL بعد از کلیک روی "OK" در هشدار
+            window.location.href = "scarlet://repo=https://viprepo1.github.io/RepoApps/scarlet.json";
         }
 
         // اجرای تابع هدایت بعد از بارگذاری صفحه
