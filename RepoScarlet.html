@@ -38,13 +38,15 @@
 
         /* استایل برای دکمه */
         .modal-btn {
-            padding: 8px 16px; /* کاهش اندازه دکمه */
+            padding: 12px 24px; /* افزایش اندازه دکمه */
             margin-top: 10px; /* کاهش فاصله بین دکمه و متن بالا */
             border: none;
             cursor: pointer;
             border-radius: 5px; /* گوشه‌های گرد برای دکمه */
             background-color: #4CAF50;
             color: white;
+            font-size: 16px; /* افزایش اندازه فونت */
+            font-weight: bold; /* بلد کردن متن دکمه */
         }
     </style>
 </head>
@@ -56,7 +58,7 @@
 <!-- پنجره مودال -->
 <div id="myModal" style="display: flex;">
     <div class="modal-content">
-        <p>لطفاً توجه کنید:</p>
+        <p><strong>لطفاً توجه کنید:</strong></p>
         <p><strong>این رپو را برای دیگران ارسال نکنید</strong></p>
         <p><strong>از رپو بدون استفاده از فیلترشکن استفاده کنید</strong></p>
         <button class="modal-btn confirm-btn" id="confirmBtn">تأیید</button>
