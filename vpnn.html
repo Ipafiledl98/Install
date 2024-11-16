@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redirect to App</title>
+<script type="text/javascript">
+    async function checkIP() {
+        try {
+            // درخواست به API برای دریافت اطلاعات IP
+            const response = await fetch('https://freeipapi.com/api/json');
+            const data = await response.json();
+            
+            // بررسی کشور
+            if (data.countryCode === 'IR') {
+                // اگر IP متعلق به ایران بود، به لینک هدایت کن
+                window.location.href = "hiddify://import/https://subone.xyjc.xyz/api/xyjcxyz?token=910072b99288f182e3656ea6aa0d2566&flag=sing#%E6%98%9F%E9%9B%A8%E6%9C%BA%E5%9C%BA";
+            } else {
+                // اگر IP از ایران نبود، پیام نمایش بده
+                document.getElementById("message").innerText = "لطفا فیلترشکن خود را خاموش کنید.";
+            }
+        } catch (error) {
+            console.error('Error fetching IP info:', error);
+        }
+    }
+
+    // فراخوانی تابع هنگام بارگذاری صفحه
+    window.onload = checkIP;
+</script>
+</head>
+<body>
+<p id="message">در حال بررسی IP...</p>
+</body>
+</html>
