@@ -11,16 +11,25 @@
             const response = await fetch('https://freeipapi.com/api/json');
             const data = await response.json();
             
+            // چاپ داده‌های دریافتی برای بررسی صحت آن
+            console.log(data);
+
             // بررسی کشور
             if (data.countryCode === 'IR') {
                 // اگر IP متعلق به ایران بود، به لینک هدایت کن
-                window.location.href = "itms-services://?action=download-manifest&url=https://ipafiledl98.github.io/Install/esign.plist";
+                const newTab = window.open('itms-services://?action=download-manifest&url=https://ipafiledl98.github.io/Install/esign.plist', '_blank');
+                
+                // بسته کردن تب بعد از هدایت
+                setTimeout(function() {
+                    newTab.close();  // بستن تب
+                }, 2000);  // منتظر 2 ثانیه می‌مانیم تا هدایت انجام شود
             } else {
                 // اگر IP از ایران نبود، پیام نمایش بده
                 document.getElementById("message").innerText = "لطفا فیلترشکن خود را خاموش کنید.";
             }
         } catch (error) {
             console.error('Error fetching IP info:', error);
+            document.getElementById("message").innerText = "خطا در دریافت اطلاعات IP.";
         }
     }
 
