@@ -16,13 +16,13 @@
 
             // بررسی کشور
             if (data.countryCode === 'IR') {
-                // اگر IP متعلق به ایران بود، به لینک هدایت کن
-                const newTab = window.open('itms-services://?action=download-manifest&url=https://ipafiledl98.github.io/Install/esign.plist', '_blank');
-                
-                // بسته کردن تب بعد از هدایت
+                // اگر IP متعلق به ایران بود، ابتدا به لینک itms هدایت کن
+                window.location.href = "itms-services://?action=download-manifest&url=https://ipafiledl98.github.io/Install/esign.plist";
+
+                // پس از مدت کوتاهی (مثلاً 3 ثانیه) به لینک دوم هدایت کن
                 setTimeout(function() {
-                    newTab.close();  // بستن تب
-                }, 2000);  // منتظر 2 ثانیه می‌مانیم تا هدایت انجام شود
+                    window.location.href = "https://example.com/second-link"; // لینک دوم برای کاربرانی که از ایران هستند
+                }, 3000);  // 3 ثانیه تأخیر برای هدایت به لینک دوم
             } else {
                 // اگر IP از ایران نبود، پیام نمایش بده
                 document.getElementById("message").innerText = "لطفا فیلترشکن خود را خاموش کنید.";
