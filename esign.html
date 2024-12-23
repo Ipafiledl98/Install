@@ -5,36 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Redirect to App</title>
 <script type="text/javascript">
-    async function checkIP() {
-        try {
-            // درخواست به API برای دریافت اطلاعات IP
-            const response = await fetch('https://freeipapi.com/api/json');
-            const data = await response.json();
-            
-            // چاپ داده‌های دریافتی برای بررسی صحت آن
-            console.log(data);
+async function checkIP() {
+try {
+// درخواست به API برای دریافت اطلاعات IP
+const response = await fetch('https://freeipapi.com/api/json');
+const data = await response.json();
 
-            // بررسی کشور
-            if (data.countryCode === 'IR') {
-                // اگر IP متعلق به ایران بود، ابتدا به لینک itms هدایت کن
-                window.location.href = "itms-services://?action=download-manifest&url=https://ipafiledl98.github.io/Install/esign.plist";
+// بررسی کشور
+if (data.countryCode === 'IR') {
+// اگر IP متعلق به ایران بود، به لینک هدایت کن
+window.location.href = "itms-services://?action=download-manifest&url=https://ipafiledl98.github.io/Install/esign.plist";
+} else {
+// اگر IP از ایران نبود، پیام نمایش بده
+document.getElementById("message").innerText = "لطفا فیلترشکن خود را خاموش کنید.";
+}
+} catch (error) {
+console.error('Error fetching IP info:', error);
+}
+}
 
-                // پس از مدت کوتاهی (مثلاً 3 ثانیه) به لینک دوم هدایت کن
-                setTimeout(function() {
-                    window.location.href = "https://ipafiledl98.github.io/SibStar-Shop/"; // لینک دوم برای کاربرانی که از ایران هستند
-                }, 3000);  // 3 ثانیه تأخیر برای هدایت به لینک دوم
-            } else {
-                // اگر IP از ایران نبود، پیام نمایش بده
-                document.getElementById("message").innerText = "لطفا فیلترشکن خود را خاموش کنید.";
-            }
-        } catch (error) {
-            console.error('Error fetching IP info:', error);
-            document.getElementById("message").innerText = "خطا در دریافت اطلاعات IP.";
-        }
-    }
-
-    // فراخوانی تابع هنگام بارگذاری صفحه
-    window.onload = checkIP;
+// فراخوانی تابع هنگام بارگذاری صفحه
+window.onload = checkIP;
 </script>
 </head>
 <body>
