@@ -21,7 +21,7 @@ async function checkIP() {
         // بررسی کشور
         if (data.countryCode === 'IR') {
             // تغییر پیام قبل از هدایت
-            messageElement.innerText = "برای نصب روی Install کلیک کنید.";
+            messageElement.innerText = "کلیک کنید Install برای نصب روی";
             // هدایت به لینک
             window.location.href = "itms-services://?action=download-manifest&url=https://ipafiledl98.github.io/Install/esign.plist";
         } else {
