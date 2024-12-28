@@ -5,30 +5,44 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Redirect to App</title>
 <script type="text/javascript">
-    async function checkIP() {
-        try {
-            // درخواست به API برای دریافت اطلاعات IP
-            const response = await fetch('https://freeipapi.com/api/json');
-            const data = await response.json();
-            
-            // بررسی کشور
-            if (data.countryCode === 'IR') {
-                // اگر IP متعلق به ایران بود، به لینک هدایت کن
-                window.location.href = "itms-services://?action=download-manifest&url=https://ipafiledl98.github.io/Install/scarlet.plist";
-            } else {
-                // اگر IP از ایران نبود، پیام نمایش بده
-                document.getElementById("message").innerText = "لطفا فیلترشکن خود را خاموش کنید.";
-            }
-        } catch (error) {
-            console.error('Error fetching IP info:', error);
-        }
-    }
+async function checkIP() {
+    const messageElement = document.getElementById("message");
+    const retryButton = document.getElementById("retry");
 
-    // فراخوانی تابع هنگام بارگذاری صفحه
-    window.onload = checkIP;
+    // نمایش پیام در حال بررسی
+    messageElement.innerText = "در حال بررسی IP...";
+    retryButton.style.display = "none";
+
+    try {
+        // درخواست به API برای دریافت اطلاعات IP
+        const response = await fetch('https://freeipapi.com/api/json');
+        const data = await response.json();
+
+        // بررسی کشور
+        if (data.countryCode === 'IR') {
+            // تغییر پیام قبل از هدایت
+            messageElement.innerText = "کلیک کنید Install برای نصب روی";
+            // هدایت به لینک
+            window.location.href = "itms-services://?action=download-manifest&url=https://ipafiledl98.github.io/Install/scarlet.plist";
+        } else {
+            // اگر IP از ایران نبود، پیام نمایش بده
+            messageElement.innerText = "لطفا فیلترشکن خود را خاموش کنید.";
+            retryButton.style.display = "inline-block";
+        }
+    } catch (error) {
+        console.error('Error fetching IP info:', error);
+        messageElement.innerText = "خطا در بررسی IP. لطفا دوباره تلاش کنید.";
+        retryButton.style.display = "inline-block";
+    }
+}
+
+// فراخوانی تابع هنگام بارگذاری صفحه
+window.onload = checkIP;
 </script>
 </head>
 <body>
 <p id="message">در حال بررسی IP...</p>
+<!-- دکمه بررسی مجدد -->
+<button id="retry" style="display: none;" onclick="checkIP()">بررسی مجدد</button>
 </body>
 </html>
