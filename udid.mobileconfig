@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Inc//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+   <dict>
+      <key>PayloadContent</key>
+      <dict>
+         <key>DeviceAttributes</key>
+         <array>
+			 <string>UDID</string>
+			<string>IMEI</string>
+			<string>MEID</string>
+			<string>ICCID</string>
+			<string>VERSION</string>
+			<string>PRODUCT</string>
+			<string>MAC_ADDRESS_EN0</string>
+			<string>DEVICE_NAME</string>
+			<string>SERIAL</string>
+			<string>IMSI</string>
+			<string>ECID</string>
+         </array>
+         <key>URL</key>
+         <string>https://profile.sibstar.ir/collect_info.php?mobile=$PROVISIONINGUDID</string>
+      </dict>
+      <key>PayloadOrganization</key>
+      <string>iUDiD.ru</string>
+      <key>PayloadDisplayName</key>
+      <string>Get Your UDID</string>
+      <key>PayloadIdentifier</key>
+      <string>ru.iudid.ru</string>
+      <key>PayloadDescription</key>
+      <string>Install this temporary profile to find and display your current device's UDID. It is automatically removed from device right after you get your UDID.</string>
+      <key>PayloadType</key>
+      <string>Profile Service</string>
+      <key>PayloadUUID</key>
+      <string>cfbe4c38-43ca-4069-a625-1e993885a2ca</string>
+       <key>PayloadVersion</key>
+      <integer>1</integer>
+   </dict>
+</plist>
